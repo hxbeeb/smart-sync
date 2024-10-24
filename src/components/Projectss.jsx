@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import p98 from '../assets/p98.jpeg';
-import addNotification from 'react-push-notification';
+// import addNotification from 'react-push-notification';
 
 const Projectss = () => {
   const { departmentId } = useParams(); 
@@ -52,13 +52,13 @@ const Projectss = () => {
       const response = await axios.get(`https://smart-sync-2hco.onrender.com/api/projects/${departmentId}`);
       setProjects(response.data);
 
-      addNotification({
-        title: 'New project added',
-        message: project.name,
-        duration: 10000,
-        icon: p98,
-        native: true,
-      });
+      // addNotification({
+      //   title: 'New project added',
+      //   message: project.name,
+      //   duration: 10000,
+      //   icon: p98,
+      //   native: true,
+      // });
     } catch (error) {
       console.error('Failed to add or update project:', error);
       alert('Failed to add or update project: ' + (error.response?.data?.message || error.message));
