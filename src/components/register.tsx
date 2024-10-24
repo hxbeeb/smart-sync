@@ -39,7 +39,7 @@ const Register = () => {
       };
       console.log(newUser);
       // Example API endpoint for registration
-      await axios.post('http://localhost:5000/api/register', newUser);
+      await axios.post('https://smart-sync-2hco.onrender.com:5000/api/register', newUser);
       
       setSuccess('Registration successful!');
       setUser({ id:null,email: '', password: '', aadharId: '', departmentName: '' });

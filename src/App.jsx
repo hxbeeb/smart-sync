@@ -4,7 +4,7 @@ import Dashboard from './components/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Projects from './components/Projects';
-import Conflicts from './components/conflicts';
+import Conflicts from './components/Conflicts';
 import Leaflet from './components/Leaflet';
 import Chat from './components/Chat';
 import Resources from './components/Resources';

@@ -13,7 +13,7 @@ function Workers() {
   useEffect(() => {
     const fetchWorkers = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/projects/${departmentId}/${projectId}/workers`);
+        const response = await axios.get(`https://smart-sync-2hco.onrender.com:5000/api/projects/${departmentId}/${projectId}/workers`);
         setWorkers(response.data);
       } catch (error) {
         console.error('Failed to fetch workers:', error);

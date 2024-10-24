@@ -66,14 +66,14 @@ const WorkerForm = ({ isEditing, currentWorker, onComplete, departmentId, projec
       if (isEditing) {
         // Update worker
         await axios.put(
-          `http://localhost:5000/api/projects/${departmentId}/${projectId}/workers/${currentWorker._id}`,
+          `https://smart-sync-2hco.onrender.com:5000/api/projects/${departmentId}/${projectId}/workers/${currentWorker._id}`,
           newWorker
         );
         console.log('Worker updated');
       } else {
         // Add new worker
         await axios.post(
-          `http://localhost:5000/api/projects/${departmentId}/${projectId}/workers`,
+          `https://smart-sync-2hco.onrender.com:5000/api/projects/${departmentId}/${projectId}/workers`,
           newWorker
         );
         console.log('Worker added');
