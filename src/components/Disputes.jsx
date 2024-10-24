@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import p98 from '../assets/p98.jpeg';
-import addNotification from 'react-push-notification';
+
 
 const Disputes = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Disputes = () => {
     // Fetch disputes from the backend
     const fetchDisputes = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/disputes`);
+        const response = await axios.get(`https://smart-sync-2hco.onrender.com/api/disputes`);
         setDisputes(response.data);
       } catch (error) {
         console.error('Failed to fetch disputes:', error);
@@ -43,23 +43,23 @@ const Disputes = () => {
       };
 
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/disputes/${dispute.id}`, newDispute);
+        await axios.put(`https://smart-sync-2hco.onrender.com/api/disputes/${dispute.id}`, newDispute);
         setIsEditing(false);
       } else {
         await axios.post(`http://localhost:5000/api/disputes`, newDispute);
       }
 
       setDispute({ title: '', description: '', hearingDate: '', parties: '', comments: '' });
-      const response = await axios.get(`http://localhost:5000/api/disputes`);
+      const response = await axios.get(`https://smart-sync-2hco.onrender.com/api/disputes`);
       setDisputes(response.data);
 
-      addNotification({
-        title: 'New dispute submitted',
-        message: dispute.title,
-        duration: 10000,
-        icon: p98,
-        native: true,
-      });
+      // addNotification({
+      //   title: 'New dispute submitted',
+      //   message: dispute.title,
+      //   duration: 10000,
+      //   icon: p98,
+      //   native: true,
+      // });
     } catch (error) {
       console.error('Failed to add or update dispute:', error);
       alert('Failed to add or update dispute: ' + (error.response?.data?.message || error.message));
