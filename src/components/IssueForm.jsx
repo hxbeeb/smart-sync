@@ -16,7 +16,7 @@ const IssueForm = ({ onIssueSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://smart-sync-2hco.onrender.com:5000/api/issues/submit', issue);
+      await axios.post('https://smart-sync-2hco.onrender.com/api/issues/submit', issue);
       onIssueSubmit();
       alert('Issue submitted successfully');
       setIssue({ title: '', description: '', postedBy: '' });

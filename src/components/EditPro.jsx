@@ -13,7 +13,7 @@ const EditPro = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`https://smart-sync-2hco.onrender.com:5000/api/projects/${departmentId}/${projectId}`);
+        const response = await axios.get(`https://smart-sync-2hco.onrender.com/api/projects/${departmentId}/${projectId}`);
         setProject(response.data); // Load project data into form
       } catch (error) {
         console.error('Failed to fetch project:', error);
@@ -46,7 +46,7 @@ const EditPro = () => {
         progress: project.progress,
       };
 
-      await axios.put(`https://smart-sync-2hco.onrender.com:5000/api/projects/${departmentId}/${projectId}`, updatedProject);
+      await axios.put(`https://smart-sync-2hco.onrender.com/api/projects/${departmentId}/${projectId}`, updatedProject);
       navigate(`/projectss/${departmentId}`);
     } catch (error) {
       console.error('Failed to update project:', error);

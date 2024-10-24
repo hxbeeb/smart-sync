@@ -57,7 +57,7 @@ export default function Login() {
       console.log(loginData);
 
       // Example API endpoint for login
-      const response = await axios.post('https://smart-sync-2hco.onrender.com:5000/api/auth/login', loginData);
+      const response = await axios.post('https://smart-sync-2hco.onrender.com/api/auth/login', loginData);
 
       // Handle successful login
       if (response.status === 200) {

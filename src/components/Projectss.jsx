@@ -15,7 +15,7 @@ const Projectss = () => {
     // Fetch projects from the backend
     const fetchProjects = async () => {
       try {
-        const response = await axios.get(`https://smart-sync-2hco.onrender.com:5000/api/projects/${departmentId}`);
+        const response = await axios.get(`https://smart-sync-2hco.onrender.com/api/projects/${departmentId}`);
         setProjects(response.data);
       } catch (error) {
         console.error('Failed to fetch projects:', error);
@@ -41,15 +41,15 @@ const Projectss = () => {
       };
   
       if (isEditing) {
-        await axios.put(`https://smart-sync-2hco.onrender.com:5000/api/projects/${departmentId}/${project.id}`, newProject);
+        await axios.put(`https://smart-sync-2hco.onrender.com/api/projects/${departmentId}/${project.id}`, newProject);
         setIsEditing(false);
       } else {
-        await axios.post(`https://smart-sync-2hco.onrender.com:5000/api/projects/${departmentId}`, newProject);
+        await axios.post(`https://smart-sync-2hco.onrender.com/api/projects/${departmentId}`, newProject);
       }
 
       setProject({ id: null, name: '', progress: 0, departmentId: departmentId });
 
-      const response = await axios.get(`https://smart-sync-2hco.onrender.com:5000/api/projects/${departmentId}`);
+      const response = await axios.get(`https://smart-sync-2hco.onrender.com/api/projects/${departmentId}`);
       setProjects(response.data);
 
       addNotification({

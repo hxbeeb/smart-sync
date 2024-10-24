@@ -10,7 +10,7 @@ const Issues = () => {
   useEffect(() => {
     const fetchIssues = async () => {
       try {
-        const response = await axios.get('hhttps://smart-sync-2hco.onrender.com:5000/api/issues/all');
+        const response = await axios.get('hhttps://smart-sync-2hco.onrender.com/api/issues/all');
         const sortedIssues = response.data.sort((a, b) => b.votes - a.votes); // Sort by votes
         setIssues(sortedIssues);
       } catch (error) {
@@ -23,7 +23,7 @@ const Issues = () => {
   // Refresh the issues list after a new issue is submitted
   const handleIssueSubmit = async () => {
     try {
-      const response = await axios.get('https://smart-sync-2hco.onrender.com:5000/api/issues/all');
+      const response = await axios.get('https://smart-sync-2hco.onrender.com/api/issues/all');
       const sortedIssues = response.data.sort((a, b) => b.votes - a.votes);
       setIssues(sortedIssues);
     } catch (error) {
@@ -34,8 +34,8 @@ const Issues = () => {
   // Handle upvote
   const handleUpvote = async (id) => {
     try {
-      await axios.put(`https://smart-sync-2hco.onrender.com:5000/api/issues/upvote/${id}`);
-      const response = await axios.get('https://smart-sync-2hco.onrender.com:5000/api/issues/all');
+      await axios.put(`https://smart-sync-2hco.onrender.com/api/issues/upvote/${id}`);
+      const response = await axios.get('https://smart-sync-2hco.onrender.com/api/issues/all');
       const sortedIssues = response.data.sort((a, b) => b.votes - a.votes);
       setIssues(sortedIssues);
 
