@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios"; // Make sure to import axios
+import { useAuth } from "./AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
-  
+  const { login, isLoggedIn } = useAuth(); // Add isLoggedIn from AuthContext
   
   const [formData, setFormData] = useState({
     email: "",
@@ -16,10 +17,16 @@ export default function Login() {
 
   const [captchaInput, setCaptchaInput] = useState('');
   const [captchaCode, setCaptchaCode] = useState(generateCaptcha());
-  
-  // State for error and success messages
+
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  // Check if the user is already logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/dashboard'); // Redirect to the dashboard if already logged in
+    }
+  }, [isLoggedIn, navigate]);
 
   function generateCaptcha() {
     const chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
@@ -36,11 +43,10 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(''); // Clear previous errors
-    setSuccess(''); // Clear previous success messages
+    setError('');
+    setSuccess('');
 
     try {
-      // Validate fields before sending the request
       if (!formData.email || !formData.password || !formData.aadhar ) {
         setError('Please fill in all the fields.');
         return;
@@ -48,22 +54,20 @@ export default function Login() {
 
       const loginData = {
         email: formData.email,
-        password: formData.password,
-        // aadhar: formData.aadhar,
-        // biometric: formData.biometric,
-        // captcha: captchaInput // Include the captcha input
+        password: formData.password
       };
 
       console.log(loginData);
 
-      // Example API endpoint for login
       const response = await axios.post('https://smart-sync-2hco.onrender.com/api/auth/login', loginData);
 
-      // Handle successful login
       if (response.status === 200) {
+        const token = response.data;
+        const userEmail = response.data.user.email;
+        console.log(userEmail);
         setSuccess('Login successful!');
-        console.log("logged in");
-        navigate('/dashboard'); // Navigate to the dashboard upon successful login
+        login(token, userEmail); // Store token and user data
+        navigate('/dashboard');
       }
     } catch (error) {
       console.error('Login failed:', error);
@@ -99,11 +103,9 @@ export default function Login() {
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-lg">
           <form onSubmit={handleLogin} className="space-y-5 bg-gradient-to-r from-white via-indigo-50 to-purple-50 p-6 shadow-lg rounded-lg border-2 border-indigo-400">
             
-            {/* Error and Success Messages */}
             {error && <p className="text-red-500 text-center">{error}</p>}
             {success && <p className="text-green-500 text-center">{success}</p>}
 
-            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-900">
                 Email address
@@ -121,7 +123,6 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Password */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-900">
                 Password
@@ -130,7 +131,7 @@ export default function Login() {
                 <input
                   id="password"
                   name="password"
-                  type="password" // Changed to password type
+                  type="password"
                   value={formData.password}
                   onChange={handleChange}
                   required
@@ -139,7 +140,6 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Aadhar ID */}
             <div>
               <label htmlFor="aadhar" className="block text-sm font-medium text-gray-900">
                 Aadhar ID
@@ -157,7 +157,6 @@ export default function Login() {
               </div>
             </div>
             
-            {/* Biometric Verification */}
             <div>
               <label htmlFor="biometric" className="block text-sm font-medium text-gray-900">
                 Biometric Verification
@@ -172,7 +171,6 @@ export default function Login() {
               </div>
             </div>
             
-            {/* Captcha */}
             <div>
               <label htmlFor="captcha" className="block text-sm font-medium text-gray-900">
                 Captcha Verification
@@ -198,7 +196,6 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div>
               <button
                 type="submit"
@@ -208,7 +205,6 @@ export default function Login() {
               </button>
             </div>
 
-            {/* New User Link */}
             <div className="text-center">
               <p className="text-sm text-gray-500">
                 New user?{' '}

@@ -21,15 +21,18 @@ import EditPro from './components/EditPro';
 import WorkerForm from './components/WorkerForm';
 import Issues from './components/Issues';
 import Register from './components/register';
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
+import { AuthProvider } from './components/AuthContext';
 
 function App() {
     return (
-        // <AuthProvider> {/* Wrap with AuthProvider */}
+        <AuthProvider> {/* Wrap with AuthProvider */}
             <Router>
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="/dashboard" element={Dashboard} />
+                    <Route path="/register" element={<Register />} />
+                    <Route element={<PrivateRoute/>}>
+                    <Route path="/dashboard" element={<Dashboard/>} />
                     <Route path="/projects" element={<Projects />} />
                     <Route path="/conflicts" element={<Conflicts />} />
                     <Route path="/leaflet" element={<Leaflet />} />
@@ -48,10 +51,14 @@ function App() {
                     <Route path="/projectss/:departmentId/:projectId" element={<EditPro />} />
                     <Route path="/projectss/:departmentId/:projectId/:workerId" element={<WorkerForm />} />
                     <Route path="/issues" element={<Issues />} />
-                    <Route path="/register" element={<Register />} />
+                    
+                    
+                    </Route>
+                    
+                    
                 </Routes>
             </Router>
-        // </AuthProvider>
+         </AuthProvider>
     );
 }
 
