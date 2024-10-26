@@ -64,7 +64,7 @@ export default function Login() {
       if (response.status === 200) {
         const token = response.data;
         const userEmail = response.data.user.email;
-        const userDept=response.date.user.dept;
+        const userDept=response.date.user.departmentName;
         console.log(userEmail);
         setSuccess('Login successful!');
         login(token, userEmail,userDept); // Store token and user data
