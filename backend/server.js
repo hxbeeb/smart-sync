@@ -208,7 +208,7 @@ app.post('/api/auth/login', async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        department: user.department // Assuming 'department' is the field in your user model
+        department: user.dept // Assuming 'department' is the field in your user model
       }
     });
   } catch (error) {
