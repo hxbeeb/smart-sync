@@ -64,10 +64,12 @@ export default function Login() {
       if (response.status === 200) {
         const token = response.data;
         const userEmail = response.data.user.email;
-        const userDept=response.date.user.departmentName;
+        const userDept=response.data.user.department;
+        const userName=response.data.user.name;
         console.log(userEmail);
+        console.log(userName);
         setSuccess('Login successful!');
-        login(token, userEmail,userDept); // Store token and user data
+        login(token, userEmail,userDept,userName); // Store token and user data
         navigate('/dashboard');
       }
     } catch (error) {

@@ -49,6 +49,10 @@ const workerSchema = new mongoose.Schema({
 
 
 const userSchema = new mongoose.Schema({
+  name:{
+    type:String,
+    required:true,
+  },
   email: {
     type: String,
     required: true,
@@ -155,7 +159,7 @@ module.exports = {
 /////register/////////////////////////////////////////
 // Signup Route with Aadhar ID and Department Name
 app.post('/api/register', async (req, res) => {
-  const { email, password, aadharId, departmentName } = req.body;
+  const {name, email, password, aadharId, departmentName } = req.body;
 
   try {
     // Check if user already exists
@@ -165,14 +169,14 @@ app.post('/api/register', async (req, res) => {
     }
 
     // Create a new user
-    const user = new User({ email, password, aadharId, departmentName });
+    const user = new User({name, email, password, aadharId, departmentName });
     await user.save(); // This may throw an error if the pre-save fails
 
     // Generate JWT token
     console.log("saved");
     const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
 
-    res.status(201).json({ token, user: { id: user._id, email: user.email, aadharId: user.aadharId, departmentName: user.departmentName } });
+    res.status(201).json({ token, user: { id: user._id,name:user.name, email: user.email, aadharId: user.aadharId, departmentName: user.departmentName } });
   } catch (error) {
     console.error('Registration error:', error); // Log the complete error
     res.status(500).json({ error: 'Registration failed', details: error.message });
@@ -208,7 +212,7 @@ app.post('/api/auth/login', async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        department: user.departmentName // Assuming 'department' is the field in your user model
+        department: user.departmentName,// Assuming 'department' is the field in your user model
       }
     });
   } catch (error) {

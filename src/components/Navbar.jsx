@@ -7,7 +7,7 @@ import { useAuth } from './AuthContext'; // Import your authentication context
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown
-  const { userEmail, logout ,userDept} = useAuth();
+  const { userEmail, logout ,userDept,userName} = useAuth();
 // Assuming you have a user object in AuthContext
 
   const toggleMenu = () => {
@@ -52,7 +52,7 @@ const Navbar = () => {
   <div className="absolute right-0 mt-2 w-auto max-w-xs bg-white shadow-lg rounded-lg">
     <div className="p-2 text-black">
       <p className="font-semibold">User Email:</p>
-      <p className="text-sm overflow-hidden text-ellipsis whitespace-nowrap">{userDept}</p>
+      <p className="text-sm overflow-hidden text-ellipsis whitespace-nowrap">{userEmail}</p>
     </div>
     <div className="border-t border-gray-200"></div>
     <button 
