@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Sidebar from './Sidebar'; // Import your Sidebar component
 
 const EditPro = () => {
   const { departmentId, projectId } = useParams();
@@ -55,54 +56,57 @@ const EditPro = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 bg-gray-100 min-h-screen">
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-semibold mb-6 text-center text-gray-800">Edit Project</h3>
+    <div className="flex">
+      <Sidebar /> {/* Render Sidebar component */}
+      <div className="flex-1 flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-purple-300 via-blue-200 to-pink-300 p-6 ml-64"> {/* Add margin-left to prevent overlap */}
+        <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+          <h3 className="text-2xl font-semibold mb-6 text-center text-gray-800">Edit Project</h3>
 
-        {errorMessage && (
-          <div className="bg-red-100 text-red-700 p-3 rounded mb-4">
-            {errorMessage}
+          {errorMessage && (
+            <div className="bg-red-100 text-red-700 p-3 rounded mb-4">
+              {errorMessage}
+            </div>
+          )}
+
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+              Project Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={project.name}
+              onChange={handleInputChange}
+              placeholder="Project Name"
+              className="border border-gray-300 p-3 rounded w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
           </div>
-        )}
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-            Project Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={project.name}
-            onChange={handleInputChange}
-            placeholder="Project Name"
-            className="border border-gray-300 p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="progress">
+              Progress (%)
+            </label>
+            <input
+              type="number"
+              name="progress"
+              value={project.progress}
+              onChange={handleInputChange}
+              placeholder="Progress (%)"
+              className="border border-gray-300 p-3 rounded w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              min="0"
+              max="100"
+            />
+          </div>
+
+          <button
+            onClick={handleUpdateProject}
+            className="bg-gradient-to-r from-green-400 to-blue-500 text-white py-2 px-4 rounded hover:shadow-lg hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out font-semibold w-full"
+          >
+            Update Project
+          </button>
         </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="progress">
-            Progress (%)
-          </label>
-          <input
-            type="number"
-            name="progress"
-            value={project.progress}
-            onChange={handleInputChange}
-            placeholder="Progress (%)"
-            className="border border-gray-300 p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-            min="0"
-            max="100"
-          />
-        </div>
-
-        <button
-          onClick={handleUpdateProject}
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-full font-semibold"
-        >
-          Update Project
-        </button>
       </div>
     </div>
   );

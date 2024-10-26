@@ -57,7 +57,7 @@ const Chat = () => {
     <div className="flex bg-gradient-to-r from-blue-100 to-blue-200 min-h-screen">
       <Sidebar />
       <div className="flex-1 ml-64">
-        <Navbar />
+      
         <div className="p-8">
           <h1 className="text-4xl font-bold text-blue-800 mb-8">Government Communication Platform</h1>
 

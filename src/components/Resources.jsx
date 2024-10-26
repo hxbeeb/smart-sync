@@ -52,46 +52,46 @@ const Resources = () => {
   return (
     <div className="flex bg-gray-100 min-h-screen">
       <Sidebar />
-      <div className="flex-1 ml-64">
-        <Navbar />
-        <div className="p-8">
-          <h1 className="text-3xl font-bold text-indigo-800 mb-8">Resource Sharing Platform</h1>
-          
-          <div className="mb-8 flex space-x-4">
+      <div className="flex-1 ml-16 sm:ml-64 p-4 sm:p-8">
+      
+        <div className="p-4 sm:p-8">
+          <h1 className="text-4xl font-bold text-indigo-800 mb-4 sm:mb-8">Resource Sharing Platform</h1>
+
+          <div className="mb-4 sm:mb-8 flex flex-wrap space-x-2 sm:space-x-4">
             <button 
-              className={`px-4 py-2 rounded-md transition duration-300 flex items-center ${selectedCategory === 'personnel' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'personnel' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('personnel')}
             >
               <FaUser className="mr-2" /> Personnel
             </button>
             <button 
-              className={`px-4 py-2 rounded-md transition duration-300 flex items-center ${selectedCategory === 'skilledWorkers' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'skilledWorkers' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('skilledWorkers')}
             >
               <FaTools className="mr-2" /> Skilled Workers
             </button>
             <button 
-              className={`px-4 py-2 rounded-md transition duration-300 flex items-center ${selectedCategory === 'unskilledWorkers' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'unskilledWorkers' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('unskilledWorkers')}
             >
               <FaHardHat className="mr-2" /> Unskilled Workers
             </button>
             <button 
-              className={`px-4 py-2 rounded-md transition duration-300 flex items-center ${selectedCategory === 'equipment' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'equipment' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('equipment')}
             >
               <FaTruck className="mr-2" /> Equipment
             </button>
             <button 
-              className={`px-4 py-2 rounded-md transition duration-300 flex items-center ${selectedCategory === 'machinery' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'machinery' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('machinery')}
             >
               <FaCog className="mr-2" /> Machinery
             </button>
           </div>
 
-          <div className="flex space-x-8">
-            <div className="w-1/3 bg-white rounded-lg shadow-md p-6">
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8">
+            <div className="w-full sm:w-1/3 bg-white rounded-lg shadow-md p-4 sm:p-6">
               <h2 className="text-xl font-semibold text-indigo-800 mb-4">Resources</h2>
               <ul className="space-y-4">
                 {selectedCategory && resources[selectedCategory].map((resource) => (
@@ -110,7 +110,7 @@ const Resources = () => {
               </ul>
             </div>
 
-            <div className="w-2/3 bg-white rounded-lg shadow-md p-6">
+            <div className="w-full sm:w-2/3 bg-white rounded-lg shadow-md p-4 sm:p-6">
               {selectedResource ? (
                 <div>
                   <h2 className="text-2xl font-bold text-indigo-800 mb-4">{selectedResource.name}</h2>

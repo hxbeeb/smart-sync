@@ -16,13 +16,11 @@ const Dashboard = () => {
       <div className="flex-1 ml-64"> {/* Ensure that ml-64 matches the sidebar width */}
         <Navbar />
         <div className="bg-gradient-to-r from-purple-300 via-blue-200 to-pink-300 p-8 min-h-screen">
-          <h1 className="text-3xl font-bold mb-4 text-center">Dashboard</h1>
-
           {/* Project Progress Section */}
           <div className="mb-8">
             <div className="max-w-7xl mx-auto">
               <header className="mb-8">
-                <h1 className="text-4xl font-extrabold text-blue-800 text-center">Department Progress</h1>
+                <h1 className="text-4xl font-extrabold text-blue-800 text-center">Dashboard</h1>
                 <p className="text-lg text-gray-600 text-center mt-2">
                   Track project progress, deadlines, and interdepartmental conflicts.
                 </p>

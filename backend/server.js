@@ -189,7 +189,8 @@ app.post('/api/auth/login', async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: 'User not found' });
     }
-    console.log("user found");
+    console.log("User found");
+
     // Compare password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
@@ -198,13 +199,23 @@ app.post('/api/auth/login', async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
-    console.log(token);
+    console.log("Token generated:", token);
 
-    res.status(200).json({ token, user: { id: user._id, name: user.name, email: user.email } });
+    // Send response with token, email, and department
+    res.status(200).json({
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        department: user.department // Assuming 'department' is the field in your user model
+      }
+    });
   } catch (error) {
     res.status(500).json({ error: 'Login failed', details: error.message });
   }
 });
+
 
 // Authentication Middleware to Protect Routes
 const authMiddleware = (req, res, next) => {

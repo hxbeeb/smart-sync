@@ -1,15 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaComments, FaVideo, FaGavel, FaFileAlt, FaTasks, FaHandsHelping, FaClipboardList, FaCode, FaExclamationCircle } from 'react-icons/fa'; // Icons
+import { FaTachometerAlt, FaComments, FaVideo, FaGavel, FaFileAlt, FaTasks, FaHandsHelping, FaClipboardList, FaCode, FaExclamationCircle } from 'react-icons/fa';
 
 const Sidebar = () => {
   return (
     <div className="h-screen bg-gradient-to-r from-green-200 via-blue-200 to-purple-200 text-black w-64 flex flex-col fixed left-0 top-0 overflow-y-auto">
-      <div className="flex items-center justify-center h-20">
-        <h1 className="text-3xl font-bold">Tools</h1>
+      <div className="flex items-center justify-center h-24 p-4"> {/* Adjusted height and added padding */}
+        <h1 className="text-3xl font-bold">Smart Sync</h1>
       </div>
       <nav className="flex-grow">
         <ul className="space-y-4 p-4">
+          <li>
+            <Link to="/dashboard" className="flex items-center space-x-3 hover:bg-gradient-to-r from-green-400 to-blue-500 p-3 rounded-md transition">
+              <FaTachometerAlt className="text-xl" />
+              <span>Dashboard</span>
+            </Link>
+          </li>
           <li>
             <Link to="/issues" className="flex items-center space-x-3 hover:bg-gradient-to-r from-green-400 to-blue-500 p-3 rounded-md transition">
               <FaExclamationCircle className="text-xl" />
