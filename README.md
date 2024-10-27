@@ -1,11 +1,21 @@
-welcome to our project smart sync
+# Welcome to Our Project: **Smart Sync**
 
-please look at our implementation of the platform  
+## Overview
 
+**Please look at our implementation of the platform.**
 
+We have developed submodules for the website that enhance its functionality.
 
-And we have developed submodules to the website 
-videos demo can be found at
-https://drive.google.com/drive/folders/1h7KO-TxtyGpgVJaKuChFaaU0uDZiyNpb
-and also
-github.com/syed-500/geotrackers
+## Video Demo
+
+### **Video demonstration can be found at:**
+[**Watch Video Demo**](https://drive.google.com/drive/folders/1h7KO-TxtyGpgVJaKuChFaaU0uDZiyNpb)
+
+## Submodules
+
+You can explore the submodules we have developed here:
+[**Geotrackers Repository**](https://github.com/syed-500/geotrackers)
+
+---
+
+Thank you for your interest in our project! Feel free to explore and provide feedback.
