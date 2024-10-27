@@ -1,10 +1,11 @@
-# React + Vite
+welcome to our project smart sync
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+please look at our implementation of the platform  
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# smart-sync
-# smart-sync
+
+And we have developed submodules to the website 
+videos demo can be found at
+https://drive.google.com/drive/folders/1h7KO-TxtyGpgVJaKuChFaaU0uDZiyNpb
+and also
+github.com/syed-500/geotrackers
