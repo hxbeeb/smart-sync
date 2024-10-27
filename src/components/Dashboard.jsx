@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Sidebar from './Sidebar';
+import Sidebar from './SideBar';
 import Kanban from './Kanban';
 import Navbar from './Navbar';
 import axios from 'axios';
@@ -19,7 +19,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const { userDept } = useAuth();
 
   // Select department based on userDept or default to the first department
@@ -34,7 +33,6 @@ const Dashboard = () => {
         setProjects(response.data);
       } catch (error) {
         console.error('Error fetching projects:', error);
-        setError('Unable to load projects. Please try again later.');
       } finally {
         setLoading(false);
       }
@@ -49,10 +47,6 @@ const Dashboard = () => {
 
   if (loading) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div className="text-red-500 text-center">{error}</div>;
   }
 
   return (

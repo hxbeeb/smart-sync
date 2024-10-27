@@ -132,6 +132,14 @@ const Projectss = () => {
             </li>
           ))}
         </ul>
+
+        {/* Check Conflicts Button */}
+        <button
+          onClick={() => navigate('/conflict')}
+          className="bg-gradient-to-r from-red-400 to-yellow-500 text-white p-3 rounded-lg w-full max-w-2xl mx-auto mt-6 hover:shadow-lg hover:from-red-500 hover:to-yellow-600 transition duration-300 ease-in-out font-semibold"
+        >
+          Check Conflicts
+        </button>
       </div>
     </div>
   );

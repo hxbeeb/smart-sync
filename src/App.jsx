@@ -23,6 +23,7 @@ import Issues from './components/Issues';
 import Register from './components/register';
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './components/AuthContext';
+import ConflictPage from './components/conflict';
 
 function App() {
     return (
@@ -51,6 +52,7 @@ function App() {
                     <Route path="/projectss/:departmentId/:projectId" element={<EditPro />} />
                     <Route path="/projectss/:departmentId/:projectId/:workerId" element={<WorkerForm />} />
                     <Route path="/issues" element={<Issues />} />
+                    <Route path="/conflict" element={<ConflictPage />} />
                     
                     
                     </Route>

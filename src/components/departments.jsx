@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Sidebar from './Sidebar'; // Import your Sidebar component
+import Sidebar from './SideBar'; // Import your Sidebar component
 
 const departments = [
   { id: '670b6fd0f66f94a7fe927396', name: 'Department of Health' },
