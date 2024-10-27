@@ -53,37 +53,36 @@ const Resources = () => {
     <div className="flex bg-gray-100 min-h-screen">
       <Sidebar />
       <div className="flex-1 ml-16 sm:ml-64 p-4 sm:p-8">
-      
         <div className="p-4 sm:p-8">
           <h1 className="text-4xl font-bold text-indigo-800 mb-4 sm:mb-8">Resource Sharing Platform</h1>
 
-          <div className="mb-4 sm:mb-8 flex flex-wrap space-x-2 sm:space-x-4">
+          <div className="mb-4 sm:mb-8 flex flex-wrap space-x-2 sm:space-x-6">
             <button 
-              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'personnel' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`mb-2 px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'personnel' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('personnel')}
             >
               <FaUser className="mr-2" /> Personnel
             </button>
             <button 
-              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'skilledWorkers' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`mb-2 px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'skilledWorkers' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('skilledWorkers')}
             >
               <FaTools className="mr-2" /> Skilled Workers
             </button>
             <button 
-              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'unskilledWorkers' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`mb-2 px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'unskilledWorkers' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('unskilledWorkers')}
             >
               <FaHardHat className="mr-2" /> Unskilled Workers
             </button>
             <button 
-              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'equipment' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`mb-2 px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'equipment' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('equipment')}
             >
               <FaTruck className="mr-2" /> Equipment
             </button>
             <button 
-              className={`px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'machinery' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
+              className={`mb-2 px-6 py-3 rounded-md transition duration-300 flex items-center ${selectedCategory === 'machinery' ? 'bg-gradient-to-r from-green-400 to-blue-500 text-white' : 'bg-white text-indigo-600 hover:bg-indigo-100'}`}
               onClick={() => setSelectedCategory('machinery')}
             >
               <FaCog className="mr-2" /> Machinery

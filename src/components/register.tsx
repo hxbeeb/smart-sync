@@ -5,7 +5,7 @@ import { useAuth } from './AuthContext';
 
 const Register = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isLoggedIn } = useAuth();
   const [user, setUser] = useState({
     id: null,
     name: '',
@@ -47,9 +47,14 @@ const Register = () => {
 
       const response = await axios.post('https://smart-sync-2hco.onrender.com/api/register', newUser);
 
-      setSuccess('Registration successful! Logging you in...');
-      const { token, userEmail, userDept } = response.data;
-      login(token, userEmail, userDept);
+      const token = response.data;
+      const userEmail = response.data.user.email;
+      const userDept = response.data.user.department;
+      const userName = response.data.user.name;
+      console.log(userEmail);
+      console.log(userName);
+      setSuccess('Login successful!');
+      login(token, userEmail, userDept, userName);
       navigate('/dashboard');
 
       setUser({ id: null, name: '', email: '', password: '', aadharId: '', departmentName: '' });

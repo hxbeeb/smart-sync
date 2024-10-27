@@ -10,7 +10,6 @@ export default function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    aadhar: "",
     biometric: "",
     captcha: ""
   });
@@ -47,7 +46,7 @@ export default function Login() {
     setSuccess('');
 
     try {
-      if (!formData.email || !formData.password || !formData.aadhar ) {
+      if (!formData.email || !formData.password) {
         setError('Please fill in all the fields.');
         return;
       }
@@ -64,12 +63,13 @@ export default function Login() {
       if (response.status === 200) {
         const token = response.data;
         const userEmail = response.data.user.email;
-        const userDept=response.data.user.department;
-        const userName=response.data.user.name;
+        const userDept = response.data.user.department;
+        const userName = response.data.user.name;
         console.log(userEmail);
         console.log(userName);
+        console.log(response.data);
         setSuccess('Login successful!');
-        login(token, userEmail,userDept,userName); // Store token and user data
+        login(token, userEmail, userDept, userName); // Store token and user data
         navigate('/dashboard');
       }
     } catch (error) {
@@ -143,23 +143,6 @@ export default function Login() {
               </div>
             </div>
 
-            <div>
-              <label htmlFor="aadhar" className="block text-sm font-medium text-gray-900">
-                Aadhar ID
-              </label>
-              <div className="mt-1">
-                <input
-                  id="aadhar"
-                  name="aadhar"
-                  type="text"
-                  value={formData.aadhar}
-                  onChange={handleChange}
-                  required
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
-                />
-              </div>
-            </div>
-            
             <div>
               <label htmlFor="biometric" className="block text-sm font-medium text-gray-900">
                 Biometric Verification

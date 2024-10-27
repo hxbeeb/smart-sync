@@ -10,7 +10,6 @@ const port = 5000;  // Changed port from 5173 to 5000
 // Middleware to parse incoming requests
 app.use(express.json());
 app.use(cors());
-
 // MongoDB connection
 mongoose.connect('mongodb+srv://habeebsalehalhussain:windows11@cluster7.lhizk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster7', {
   useNewUrlParser: true,
